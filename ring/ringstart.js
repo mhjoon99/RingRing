@@ -28,14 +28,12 @@ class App {
 
     _setupModel() {
         const gltfLoader = new GLTFLoader();
-        const url = '../ring.glb';
+        const url = 'data/ring.glb';
         gltfLoader.load(
             url, 
             (gltf) => {
                 const root = gltf.scene;
                 this._scene.add(root);
-
-                this._zoomFit(root, this._camera);
             }
         );
     }
