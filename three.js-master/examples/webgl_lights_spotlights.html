@@ -28,7 +28,7 @@
 
 		<script type="module">
 			import * as THREE from 'three';
-			import { TWEEN } from 'three/addons/libs/tween.module.min.js';
+			import TWEEN from 'three/addons/libs/tween.module.js';
 			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 			const renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -63,7 +63,6 @@
 
 				renderer.shadowMap.enabled = true;
 				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-				renderer.outputEncoding = THREE.sRGBEncoding;
 
 				camera.position.set( 46, 22, - 21 );
 

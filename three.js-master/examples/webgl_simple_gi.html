@@ -31,6 +31,8 @@
 
 			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
+			THREE.ColorManagement.enabled = false; // TODO: Confirm correct color management.
+
 			class GIMesh extends THREE.Mesh {
 
 				copy( source ) {
@@ -56,7 +58,7 @@
 				scene.updateMatrixWorld( true );
 
 				let clone = scene.clone();
-				clone.autoUpdate = false;
+				clone.matrixWorldAutoUpdate = false;
 
 				const rt = new THREE.WebGLRenderTarget( SIZE, SIZE );
 
@@ -139,7 +141,7 @@
 					if ( currentVertex >= totalVertex ) {
 
 						clone = scene.clone();
-						clone.autoUpdate = false;
+						clone.matrixWorldAutoUpdate = false;
 
 						bounces ++;
 						currentVertex = 0;
@@ -196,6 +198,7 @@
 				renderer = new THREE.WebGLRenderer();
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
 				document.body.appendChild( renderer.domElement );
 
 				new SimpleGI( renderer, scene );
